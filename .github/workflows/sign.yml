@@ -1,0 +1,16 @@
+name: sign
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  sign:
+    runs-on: ['windows-2019', 'windows-2022']
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Register Microsoft Office Subject Interface Packages
+        run: regsvr32.exe /s sip/msosipx.dll
